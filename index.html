@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather DashBoard</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Weather DashBoard</h1>
+    </header>
+    <main>
+        <section id="search-sec">
+            <h2>Search for a City:</h2>
+            <input type="text" id="searchInp" placeholder="Enter a city">
+            <button id="searchBtn">Search</button>
+            <hr>
+            <div id="weather-history">
+                <div class="visited-city">Austin</div>
+                <div class="visited-city">Philadephia</div>
+            </div>
+        </section>
+        <section id="weather-sec">
+            <div id="current-weather">
+                <h2 id="city-name">City 
+                    <span id="city-date"></span>
+                    <span id="cw-icon"></span>
+                </h2>
+                <div id="cw-info">
+                    <div>Temp: <span id="temp"></span></div>
+                    <div>Wind: <span id="wind"></span></div>
+                    <div>Humidity: <span id="hum"></span></div>
+                    <div>UV index: <div id="uv">0</div></div>
+                </div>
+            </div>
+            <div id="five-day">
+                <h3>5-Day Forecast:</h3>
+                <div class="fw">
+                    <h4 class="fw-date">3/30/21</h4>
+                    <div class="fw-icon"></div>
+                    <div class="fw-info">Temp: <span id="fw-temp"></span></div>
+                    <div class="fw-info">Wind: <span id="fw-wind"></span></div>
+                    <div class="fw-info">Humidity: <span id="fw-hum"></span></div>
+                </div>
+                <div class="fw">
+                    <h4 class="fw-date">3/30/21</h4>
+                    <div class="fw-icon"></div>
+                    <div class="fw-info">Temp: <span id="fw-temp"></span></div>
+                    <div class="fw-info">Wind: <span id="fw-wind"></span></div>
+                    <div class="fw-info">Humidity: <span id="fw-hum"></span></div>
+                </div>
+                <div class="fw">
+                    <h4 class="fw-date">3/30/21</h4>
+                    <div class="fw-icon"></div>
+                    <div class="fw-info">Temp: <span id="fw-temp"></span></div>
+                    <div class="fw-info">Wind: <span id="fw-wind"></span></div>
+                    <div class="fw-info">Humidity: <span id="fw-hum"></span></div>
+                </div>
+                <div class="fw">
+                    <h4 class="fw-date">3/30/21</h4>
+                    <div class="fw-icon"></div>
+                    <div class="fw-info">Temp: <span id="fw-temp"></span></div>
+                    <div class="fw-info">Wind: <span id="fw-wind"></span></div>
+                    <div class="fw-info">Humidity: <span id="fw-hum"></span></div>
+                </div>
+                <div class="fw">
+                    <h4 class="fw-date">3/30/21</h4>
+                    <div class="fw-icon"></div>
+                    <div class="fw-info">Temp: <span id="fw-temp"></span></div>
+                    <div class="fw-info">Wind: <span id="fw-wind"></span></div>
+                    <div class="fw-info">Humidity: <span id="fw-hum"></span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
