@@ -43,6 +43,7 @@ function currentWeatherData(city) {
     .catch(function(){
         document.querySelector("#city-err").setAttribute("class", "err-msg")
         document.querySelector("#city-err").textContent = "City name '" + city + "', was not found or could not be loaded"
+
         pageDataReset(initialPageData)
     })
 }
@@ -147,6 +148,8 @@ function pageDataReset(initialPageData) {
     for (let i = 0; i < currentPageDataEl.length; i++) {
         currentPageDataEl[i].innerHTML = initialPageData[i]
     }
+    document.querySelector("#uv").removeAttribute("class")
+    document.querySelector("#uv").textContent = ""
 }
 
 // Render visited city
