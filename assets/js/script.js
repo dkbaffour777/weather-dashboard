@@ -55,20 +55,21 @@ function getUV(lon, lat) {
         return res.json()
     })
     .then(function(uvData){
+        console.log(uvData)
         var uvEl = document.querySelector("#uv")
         var uviValue = uvData.current.uvi
         uvEl.textContent = uviValue
         
         // Color code uv index
-        if(uviValue >= 0 && uviValue <= 2) {
+        if(uviValue <= 2) {
             uvEl.setAttribute("class", "minimal")
-        } else if(uviValue >= 3 && uviValue <= 4) {
+        } else if(uviValue > 2 && uviValue <= 4) {
             uvEl.setAttribute("class", "low")
-        } else if(uviValue >= 5 && uviValue <= 6) {
+        } else if(uviValue > 4 && uviValue <= 6) {
             uvEl.setAttribute("class", "moderate")
-        } else if(uviValue >= 7 && uviValue <= 9) {
+        } else if(uviValue > 6 && uviValue <= 9) {
             uvEl.setAttribute("class", "high")
-        } else if(uviValue >= 10) {
+        } else if(uviValue > 9) {
             uvEl.setAttribute("class", "very-high")
         }
     })
