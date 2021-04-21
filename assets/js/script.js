@@ -5,7 +5,7 @@ var initialPageData = appInitialData()
 var weatherHistory = []
 var localWeatherHistory = JSON.parse(localStorage.getItem("localWeatherHistory")) 
 if(localWeatherHistory){
-    //console.log(localWeatherHistory)
+    ////(localWeatherHistory)
     weatherHistory = localWeatherHistory
     weatherHistory.map(city => addVisitedCity(city))
 }
@@ -25,7 +25,7 @@ function currentWeatherData(city) {
         return res.json()
     })
     .then(function(weatherData){
-        //console.log(weatherData)
+        ////(weatherData)
 
         // Get the city info
         document.querySelector("#cw-name").textContent = weatherData.name
@@ -55,7 +55,7 @@ function getUV(lon, lat) {
         return res.json()
     })
     .then(function(uvData){
-        console.log(uvData)
+        //console.log(uvData)
         var uvEl = document.querySelector("#uv")
         var uviValue = uvData.current.uvi
         uvEl.textContent = uviValue
