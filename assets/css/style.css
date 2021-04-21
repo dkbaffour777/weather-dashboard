@@ -26,6 +26,10 @@ main {
     flex-direction: column;
 }
 
+#search-sec form {
+    width: 100%;
+}
+
 #search-sec h2{
     text-align: left;
 }
@@ -50,6 +54,7 @@ main {
 
 #searchBtn {
     border: none;
+    width: 100%;
     background-color: #000;
     padding: 10px;
     color: #fff;
@@ -68,11 +73,16 @@ hr {
 }
 
 .visited-city {
+    width: 100%;
     background-color: #EEE;
     font-style: italic;
     padding: 10px;
     margin: 10px auto;
     cursor: pointer;
+}
+
+.visited-city:hover {
+    background-color: rgb(180, 180, 180);
 }
 
 #weather-sec {
@@ -100,7 +110,6 @@ hr {
 #cw-info div {
     margin-bottom: 15px;
 }
-
 #uv {
     border-radius: 3px;
     display: inline-block;
@@ -108,7 +117,27 @@ hr {
     padding: 2px;
     width: 40px;
     color: #fff;
+    font-weight: bold;
+}
+
+.minimal {
     background-color: green;
+}
+
+.low {
+    background-color: rgb(235, 211, 0);
+}
+
+.moderate {
+    background-color: rgb(255, 145, 0);
+}
+
+.high {
+    background-color: rgb(128, 0, 0);
+}
+
+.very-high {
+    background-color: rgb(144, 0, 113);
 }
 
 #five-day h3{

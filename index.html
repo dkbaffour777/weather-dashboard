@@ -14,8 +14,10 @@
     <main>
         <section id="search-sec">
             <h2>Search for a City:</h2>
-            <input type="text" id="searchInp" placeholder="Enter a city">
-            <button id="searchBtn" type="submit">Search</button>
+            <form id="search-form">
+                <input type="text" id="searchInp" placeholder="Enter a city">
+                <button id="searchBtn" type="submit">Search</button>
+            </form>
             <div id="city-err"></div>
             <hr>
             <div id="weather-history"></div>
@@ -31,7 +33,7 @@
                     <div>Temp: <span id="temp" class="initial-data"></span></div>
                     <div>Wind: <span id="wind" class="initial-data"></span></div>
                     <div>Humidity: <span id="hum" class="initial-data"></span></div>
-                    <div>UV index: <div id="uv" class="initial-data">0</div></div>
+                    <div>UV index: <div id="uv" class="uv">0</div></div>
                 </div>
             </div>
             <div id="five-day">
