@@ -20,7 +20,7 @@ function loadData(city) {
 
 // fetch the current weather data
 function currentWeatherData(city) {
-    fetch("http://api.openweathermap.org/data/2.5/weather?q=" + city +"&appid=a0722575280635660ac6cc42752f6d56&units=imperial")
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city +"&appid=a0722575280635660ac6cc42752f6d56&units=imperial")
     .then(function(res){
         return res.json()
     })
@@ -42,7 +42,7 @@ function currentWeatherData(city) {
     })
     .catch(function(){
         document.querySelector("#city-err").setAttribute("class", "err-msg")
-        document.querySelector("#city-err").textContent = "City name '" + city + "', was not found"
+        document.querySelector("#city-err").textContent = "City name '" + city + "', was not found or could not be loaded"
         pageDataReset(initialPageData)
     })
 }
@@ -84,7 +84,7 @@ function getWeatherDate(unix_timeStamp) {
 function getWeatherIcon(iconCode, iconElCont) {
     iconElCont.innerHTML = ""
     var iconEl = document.createElement("img")
-    iconEl.setAttribute("src", "http://openweathermap.org/img/wn/"+ iconCode +"@2x.png")
+    iconEl.setAttribute("src", "https://openweathermap.org/img/wn/"+ iconCode +"@2x.png")
     
     iconElCont.append(iconEl)
     iconEl.style.width = "50px"
@@ -121,7 +121,7 @@ function renderFiveDayWeather(fiveDayData) {
 
 // 5 day weather forecast
 function fiveDayWeather(city) {
-    fetch("http://api.openweathermap.org/data/2.5/forecast?q=" + city +"&appid=a0722575280635660ac6cc42752f6d56&units=imperial")
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + city +"&appid=a0722575280635660ac6cc42752f6d56&units=imperial")
     .then(function(res){
         return res.json()
     })
