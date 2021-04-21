@@ -5,7 +5,7 @@ var initialPageData = appInitialData()
 var weatherHistory = []
 var localWeatherHistory = JSON.parse(localStorage.getItem("localWeatherHistory")) 
 if(localWeatherHistory){
-    console.log(localWeatherHistory)
+    //console.log(localWeatherHistory)
 }
 
 function loadData(city) {
@@ -25,7 +25,7 @@ function currentWeatherData(city) {
     .then(function(weatherData){
         //console.log(weatherData)
 
-        // Get the city name, date and icon
+        // Get the city info
         document.querySelector("#cw-name").textContent = weatherData.name
         document.querySelector("#cw-date").textContent = getWeatherDate(weatherData.dt)
         getWeatherIcon(weatherData.weather[0].icon, document.querySelector("#cw-icon"))
@@ -34,13 +34,18 @@ function currentWeatherData(city) {
         document.querySelector("#wind").textContent = weatherData.wind.speed + " MPH"
         document.querySelector("#hum").textContent = weatherData.main.humidity + "%"
         getUV(weatherData.coord.lon, weatherData.coord.lat)
+
+        // Save the city at the weather history section and the local storage
+        saveWeatherHistory(city)
     })
     .catch(function(error){
-        alert("City not found")
+        document.querySelector("#city-err").setAttribute("class", "err-msg")
+        document.querySelector("#city-err").textContent = "City name '" + city + "', was not found"
         pageDataReset(initialPageData)
     })
 }
 
+// Icon code image link
 function getWeatherIcon(iconCode, iconElCont) {
     var iconEl = document.createElement("img")
     iconEl.setAttribute("src", "http://openweathermap.org/img/wn/"+ iconCode +"@2x.png")
@@ -50,6 +55,7 @@ function getWeatherIcon(iconCode, iconElCont) {
     iconEl.style.height = "100%"
 }
 
+// UV index data
 function getUV(lon, lat) {
     fetch("http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon+ "&appid=a0722575280635660ac6cc42752f6d56&units=imperial")
     .then(function(res){
@@ -58,17 +64,16 @@ function getUV(lon, lat) {
     .then(function(uvData){
         document.querySelector("#uv").textContent = uvData.value
     })
-    .catch(function(error){
-        alert(error)
-    })
 }
 
+// Customized date
 function getWeatherDate(unix_timeStamp) {
     var myDate = new Date(unix_timeStamp * 1000)
     var result = myDate.getMonth() + "/" + myDate.getDate() + "/" + myDate.getFullYear()
     return result
 }
 
+// Render the five day weather elements
 function renderFiveDayWeather(fiveDayData) {
     var fiveDayElCont = document.querySelector("#five-day-cont")
     var fiveDayEl = null
@@ -76,7 +81,6 @@ function renderFiveDayWeather(fiveDayData) {
     
     for (let i = 8; i <= fiveDayData.length; i += 8) {
         if(i === fiveDayData.length) i = fiveDayData.length - 1
-        console.log(i)
         fiveDayEl = document.createElement("div")
         fiveDayEl.setAttribute("class", "fw")
         fiveDayEl.innerHTML = `
@@ -104,11 +108,7 @@ function fiveDayWeather(city) {
         return res.json()
     })
     .then(function(weatherData){
-        console.log(weatherData)
         renderFiveDayWeather(weatherData.list)
-    })
-    .catch(function(error){
-        alert(error)
     })
 }
 
@@ -131,6 +131,28 @@ function pageDataReset(initialPageData) {
     }
 }
 
+// Save the cities searched
+function saveWeatherHistory(city) {
+    if(localStorage.getItem("localWeatherHistory")) {
+        var weatherH = JSON.parse(localStorage.getItem("localWeatherHistory"))
+        if(weatherH.includes(city)) {
+            return
+        }
+    }
+    function save() {
+        // Create a new element and append it to the page
+        var visitedCityEl = document.createElement("div")
+        visitedCityEl.setAttribute("class", "visited-city")
+        visitedCityEl.textContent = city
+        document.querySelector("#weather-history").append(visitedCityEl)
+        
+        // Store the search value in the local storage
+        weatherHistory.push(city)
+        localStorage.setItem("localWeatherHistory", JSON.stringify(weatherHistory))    
+    }
+    save()
+}
+
 // Load the weather data when the search button is clicked
 function loadSearchInpData() {
     var city = document.querySelector("#searchInp").value
@@ -143,6 +165,13 @@ function loadHistoryData(event) {
     }
 }
 
+function removeErrMsg() {
+    document.querySelector("#city-err").removeAttribute("class")
+    document.querySelector("#city-err").textContent = ""
+}
+
 document.querySelector("#searchBtn").addEventListener("click", loadSearchInpData)
 
 document.querySelector("#weather-history").addEventListener("click", loadHistoryData)
+
+document.querySelector("#searchInp").addEventListener("focus", removeErrMsg)

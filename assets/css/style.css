@@ -39,6 +39,15 @@ main {
     margin: 20px auto;
 }
 
+.err-msg {
+    width: 92%;
+    padding: 4%;
+    color: red;
+    background-color: rgba(255, 153, 153, 0.2);
+    text-align: center;
+    margin: 10px auto;
+}
+
 #searchBtn {
     border: none;
     background-color: #000;
