@@ -148,8 +148,6 @@ function pageDataReset(initialPageData) {
     for (let i = 0; i < currentPageDataEl.length; i++) {
         currentPageDataEl[i].innerHTML = initialPageData[i]
     }
-    document.querySelector("#uv").removeAttribute("class")
-    document.querySelector("#uv").textContent = ""
 }
 
 // Render visited city
