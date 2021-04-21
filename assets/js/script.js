@@ -176,7 +176,6 @@ function saveWeatherHistory(city) {
         // Store the search value in the local storage
         weatherHistory.push(city)
         localStorage.setItem("localWeatherHistory", JSON.stringify(weatherHistory))    
-        console.log(weatherHistory)
     }
     save()
 }

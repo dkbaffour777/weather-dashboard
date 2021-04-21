@@ -67,13 +67,12 @@ hr {
 }
 
 #weather-history {
-    width: 100%;
+    width: 98%;
     margin: 10px auto;
     text-align: center;
 }
 
 .visited-city {
-    width: 100%;
     background-color: #EEE;
     font-style: italic;
     padding: 10px;
@@ -160,8 +159,8 @@ hr {
 }
 
 /* Media queries */
-@media screen and (max-width: 1393px) {
+@media screen and (max-width: 1370px) {
     body {
-        width: 1393px;
+        width: 1370px;
     }
 }
