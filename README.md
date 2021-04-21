@@ -5,4 +5,4 @@
   - Search history is stored and can be used later on as a shortcut to view previous searches
  
   ## A preview of weather-dashboard
-    ![weather-dashboard-preview](assets/images/appPreview.png)
+    ![weather-dashboard-preview](assets/images/appPreview.PNG)
